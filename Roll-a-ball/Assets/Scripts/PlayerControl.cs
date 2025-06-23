@@ -1,20 +1,37 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using TMPro;
 public class PlayerControl : MonoBehaviour
 {// delcare variable
     private Rigidbody rb;
+
+    private int count;
     private float movementX;
     private float movementY;
 
     [SerializeField] private float speed = 0;
-
+    public TextMeshProUGUI countText;
+    public GameObject WinTextObject;
 
 
     void Start()
     {
         //Gets and store the RigidBody component attached to player
         rb = GetComponent<Rigidbody>();
+
+        count = 0;
+
+        SetCountText();
+        WinTextObject.SetActive(false);
+    }
+
+    void SetCountText()
+    {
+        countText.text = "Count:" + count.ToString();
+        if (count >= 7)
+        {
+            WinTextObject.SetActive(true);
+        }
     }
 
     private void FixedUpdate()
@@ -39,6 +56,10 @@ public class PlayerControl : MonoBehaviour
         if (other.gameObject.CompareTag("Pickup"))
         {
             other.gameObject.SetActive(false);
+
+            count = count + 1;
+
+            SetCountText();
         }
 
     }
