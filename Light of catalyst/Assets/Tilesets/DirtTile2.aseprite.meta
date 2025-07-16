@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 83ba34da47cbe4d38b881f3c8a4f6d3c
+guid: cc00205d14705443aac5b4664f7a71c6
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -127,9 +127,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Background1 0
+  - name: DirtTile2
     originalName: 
-    pivot: {x: 0.521875, y: -0.09701493}
+    pivot: {x: 0.6344086, y: -2.0000002}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -137,9 +137,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 320
-      height: 134
-    spriteID: 0fcf5e0892b194ae7ada9709282251d5
+      width: 93
+      height: 29
+    spriteID: 38b3520521aa04a6486a1fa1a76f8160
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -153,25 +153,25 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 656808287
+      value0: 1741387325
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: Background1 0
+    name: DirtTile2
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Background1 (1)
+    - name: DirtTile2
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: -7
-        y: 13
-        width: 320
-        height: 134
-      spriteId: 0fcf5e0892b194ae7ada9709282251d5
+        x: 101
+        y: 58
+        width: 93
+        height: 29
+      spriteId: 38b3520521aa04a6486a1fa1a76f8160
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -182,4 +182,4 @@ ScriptedImporter:
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 320, y: 180}
-  previousTextureSize: {x: 512, y: 256}
+  previousTextureSize: {x: 128, y: 64}

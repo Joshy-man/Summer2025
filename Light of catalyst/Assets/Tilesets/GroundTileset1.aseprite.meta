@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 83ba34da47cbe4d38b881f3c8a4f6d3c
+guid: f5a5b04d2c1544f0ebd0feb31cae165f
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -72,7 +72,7 @@ ScriptedImporter:
     textureFormatSet: 0
     applyGammaDecoding: 0
   previousAsepriteImporterSettings:
-    fileImportMode: 1
+    fileImportMode: 2
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
@@ -87,7 +87,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   asepriteImporterSettings:
-    fileImportMode: 1
+    fileImportMode: 2
     importHiddenLayers: 0
     layerImportMode: 1
     defaultPivotSpace: 0
@@ -126,10 +126,12 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  animatedSpriteImportData:
-  - name: Background1 0
+  animatedSpriteImportData: []
+  spriteSheetImportData: []
+  tileSetImportData:
+  - name: Layer 1
     originalName: 
-    pivot: {x: 0.521875, y: -0.09701493}
+    pivot: {x: 1.7777778, y: 1.9512196}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -137,9 +139,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 320
-      height: 134
-    spriteID: 0fcf5e0892b194ae7ada9709282251d5
+      width: 45
+      height: 41
+    spriteID: 2f66e05e0cc7c42669b22edc8376539e
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -148,38 +150,59 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  spriteSheetImportData: []
-  tileSetImportData: []
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 656808287
+      value0: 4287466680
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: Background1 0
-    layerFlags: 0
+    name: Layer 1
+    layerFlags: 3
     layerType: 0
     blendMode: 0
     cells:
-    - name: Background1 (1)
+    - name: Layer 1
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: -7
-        y: 13
-        width: 320
-        height: 134
-      spriteId: 0fcf5e0892b194ae7ada9709282251d5
+        x: 29
+        y: 79
+        width: 45
+        height: 41
+      spriteId: 2f66e05e0cc7c42669b22edc8376539e
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
     parentIndex: -1
-  tileSets: []
+  - layerIndex: 1
+    uuid:
+      value0: 2518401476
+      value1: 0
+      value2: 0
+      value3: 0
+    guid: 0
+    name: Ground-Tileset
+    layerFlags: 3
+    layerType: 2
+    blendMode: 0
+    cells: []
+    linkedCells: []
+    tileCells: []
+    tileSetIndex: 0
+    parentIndex: -1
+  tileSets:
+  - id: 0
+    name: Tileset_0
+    tileSize:
+      x: 5
+      y: 4
+    tiles: []
+    guid: -1102077067
   platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 320, y: 180}
-  previousTextureSize: {x: 512, y: 256}
+  canvasSize: {x: 160, y: 160}
+  previousTextureSize: {x: 64, y: 64}

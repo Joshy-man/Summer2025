@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
+    public float jump = 10f;
     public float moveSpeed = 10f;
 
     float horizontalMovement;
@@ -16,6 +17,10 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         rb.linearVelocity = new Vector2(horizontalMovement * moveSpeed, rb.linearVelocity.y);
+        if (Input.GetButtonDown("Jump"))
+        {
+            rb.AddForce(new Vector2(rb.linearVelocity.x, jump));
+        }
     }
 
     public void Move(InputAction.CallbackContext context)
