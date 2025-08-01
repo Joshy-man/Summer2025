@@ -5,11 +5,14 @@ TagManager:
   serializedVersion: 3
   tags:
   - Trap
+  - Platform
+  - Win
+  - Ground
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - 
