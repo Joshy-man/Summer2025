@@ -1,12 +1,15 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
     public float jump = 10f;
     public float moveSpeed = 10f;
+
+    public Text WINTEXT;
     
     bool isFacingRight = false;
     bool isGrounded = false;
@@ -109,9 +112,14 @@ public class PlayerMovement : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Trigger with: " + collision.gameObject.name + " (Tag: " + collision.gameObject.tag + ")");
-        
+
         // Handle damage/pickups here - DON'T change isGrounded in triggers
         // Example: if (collision.CompareTag("Enemy")) { TakeDamage(); }
+        if (collision.tag == "Win")
+        {
+            WINTEXT.gameObject.SetActive(true);
+            Time.timeScale = 0;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)

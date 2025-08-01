@@ -1,16 +1,13 @@
 using UnityEngine;
 using System.Collections;
 
-public class Enemy : MonoBehaviour
+public class ChasingEnemy : MonoBehaviour
 {
     public Transform player;
     public float chaseSpeed = 2f;
+    public float chaseDistance = 5f;
     public float jumpForce = 2f;
     public LayerMask groundLayer;
-    
-    [Header("Detection Settings")]
-    public float detectionRange = 5f; // Distance within which enemy will chase player
-    
     private Rigidbody2D rb;
     private bool isGrounded;
     private bool shouldJump;
@@ -19,11 +16,10 @@ public class Enemy : MonoBehaviour
     private int currentHealth;
     private SpriteRenderer spriteRenderer;
     private Color ogColor;
-    
-    [Header("Facing Settings")]
-    public bool facingRight = true; // Which direction enemy starts facing
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [Header("Facing Settings")]
+    public bool facingRight = true;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -33,38 +29,24 @@ public class Enemy : MonoBehaviour
         ogColor = spriteRenderer.color;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        // Is Grounded?
         isGrounded = Physics2D.Raycast(transform.position, Vector2.down, 1f, groundLayer);
 
-        // Calculate distance to player
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
-        // Only chase if player is within detection range
-        if (distanceToPlayer <= detectionRange)
+        if (distanceToPlayer <= chaseDistance)
         {
-            // Player direction
             float direction = Mathf.Sign(player.position.x - transform.position.x);
-
-            // Face the player
             FacePlayer(direction);
 
-            // Player above detection
             bool isPlayerAbove = Physics2D.Raycast(transform.position, Vector2.up, 3f, 1 << player.gameObject.layer);
 
             if (isGrounded)
             {
-                // Chase player
                 rb.linearVelocity = new Vector2(direction * chaseSpeed, rb.linearVelocity.y);
 
-                // Jump if there's gap ahead && no ground in front
-                // else if there's player above and platform above
-                // if Ground
                 RaycastHit2D groundInFront = Physics2D.Raycast(transform.position, new Vector2(direction, 0), 2f, groundLayer);
-                
-                // If platform above
                 RaycastHit2D platformAbove = Physics2D.Raycast(transform.position, Vector2.up, 3f, groundLayer);
 
                 if (!groundInFront.collider && platformAbove.collider)
@@ -75,42 +57,31 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            // Stop moving when player is out of range
-            if (isGrounded)
-            {
-                rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
-            }
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
         }
     }
 
     void FacePlayer(float direction)
     {
-        // Check if we need to flip
         if (direction > 0 && !facingRight)
         {
-            // Player is to the right, flip to face right
             Flip();
         }
         else if (direction < 0 && facingRight)
         {
-            // Player is to the left, flip to face left
             Flip();
         }
     }
 
     void Flip()
-    {
-        // Switch the direction flag
-        facingRight = !facingRight;
+{
+    facingRight = !facingRight;
 
-        // Method 1: Using transform.localScale (most common)
-        Vector3 scale = transform.localScale;
-        scale.x *= -1;
-        transform.localScale = scale;
+    Vector3 scale = transform.localScale;
+    scale.x = facingRight ? Mathf.Abs(scale.x) : -Mathf.Abs(scale.x);
+    transform.localScale = scale;
+}
 
-        // Alternative Method 2: Using SpriteRenderer.flipX (uncomment if you prefer this)
-        // spriteRenderer.flipX = !spriteRenderer.flipX;
-    }
 
     private void FixedUpdate()
     {
@@ -145,10 +116,9 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
 
-    // Optional: Draw the detection range in the Scene view for debugging
-    void OnDrawGizmosSelected()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, detectionRange);
+        Gizmos.DrawWireSphere(transform.position, chaseDistance);
     }
 }
